@@ -52,7 +52,6 @@ const followUserOrUnfollowUserController= async (req,res) =>{
 
 const getPostsOfFollowing =async (req,res) =>{
 
-
     try {
         const curUserId=req._id;
 
