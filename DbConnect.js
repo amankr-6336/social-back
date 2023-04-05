@@ -14,7 +14,7 @@ module.exports=async () =>{
     try{
         const connect = await mongoose.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true });
 
-        // console.log(`mongodb connected : ${connect.connection.host}`);
+        console.log(`mongodb connected : ${connect.connection.host}`);
     }catch(error){
         // console.log(error);
         process.exit(1);

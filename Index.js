@@ -50,7 +50,7 @@ const PORT=process.env.PORT || 4001;
 DbConnect();
 
 app.listen(PORT ,()=>{
-    // console.log(`listening to port ${PORT}`);
+    console.log(`listening to port ${PORT}`);
 });
 
 
