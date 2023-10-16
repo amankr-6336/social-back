@@ -2,8 +2,8 @@ const Post = require("../model/Post");
 const User = require("../model/User");
 const cloudinary=require('cloudinary').v2;
 // const { post } = require("../router/UserRouter");
-const { error, success } = require("../utils/responseWrapper");
-const { mapPostOutput } = require("../utils/Utils");
+const { error, success } = require("../utils/Utils");
+const { mapPostOutput } = require("../utils/responseWrapper");
 
 
 const followUserOrUnfollowUserController= async (req,res) =>{

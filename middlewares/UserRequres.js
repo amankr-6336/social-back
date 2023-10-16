@@ -1,6 +1,6 @@
 const jwt=require("jsonwebtoken");
 const dotenv=require('dotenv');
-const { error } = require("../utils/responseWrapper");
+const { error } = require("../utils/Utils");
 const User = require("../model/User");
 
 module.exports= async(req,res,next) =>{

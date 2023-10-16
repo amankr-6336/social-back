@@ -2,7 +2,7 @@ const User=require('../model/User');
 const bcrypt=require('bcrypt');
 const jwt=require('jsonwebtoken');
 const dotenv=require('dotenv');
-const { error, success } = require('../utils/responseWrapper');
+const { error, success } = require('../utils/Utils');
 
 
 const SignUpController= async(req,res) =>{
@@ -37,7 +37,8 @@ const SignUpController= async(req,res) =>{
         return res.send(success(201,"user created"));
 
     } catch (e) {
-        return res.send(error(501,e.message));
+        console.log(e);
+        return res.send(501,"error");
     }
 }
 
@@ -45,6 +46,7 @@ const SignUpController= async(req,res) =>{
 const LoginController=async(req,res) =>{
     try {
         const {email,password} =req.body;
+        console.log(email,password);
 
         if(!email || !password ){
             return res.send(error(400,"all field are requires"));
@@ -79,7 +81,7 @@ const LoginController=async(req,res) =>{
         return res.send(success(200,{accessToken}));
 
     } catch (e) {
-        
+        return res.send(error(501,e.message));
     }
 };
 

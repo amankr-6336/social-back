@@ -1,26 +1,26 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "��#\u0000 \u0000s\u0000o\u0000c\u0000i\u0000a\u0000l\u0000-\u0000b\u0000a\u0000c\u0000k\u0000\r\u0000 \u0000#\u0000 \u0000s\u0000o\u0000c\u0000i\u0000a\u0000l\u0000-\u0000b\u0000a\u0000c\u0000k\u0000-\u0000n\u0000e\u0000w\u0000\r\u0000 \u0000",
+  "main": "Index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"node Index.js"
+    "start": "node Index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.0",
-    "cloudinary": "^1.33.0",
+    "cloudinary": "^1.36.4",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.0",
-    "mongoose": "^6.8.3",
+    "mongoose": "^7.1.0",
     "morgan": "^1.10.0",
-    "nodemon": "^2.0.20",
+    "nodemon": "^2.0.22",
     "time-ago": "^0.2.1"
   }
 }
