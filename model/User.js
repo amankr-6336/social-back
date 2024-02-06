@@ -41,6 +41,12 @@ const userSchema=mongoose.Schema({
             type:mongoose.Schema.Types.ObjectId,
             ref:'post'
         }
+    ],
+    story:[
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            ref:'story'  
+        }
     ]
 
 },{

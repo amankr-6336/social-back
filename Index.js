@@ -7,7 +7,9 @@ const postRouter=require('./router/PostRouter');
 const cookieParser=require('cookie-parser');
 const cors=require('cors');
 const userRouter=require('./router/UserRouter');
+const storyRouter=require('./router/StoryRouter')
 const cloudinary=require('cloudinary').v2;
+require('./utils/AgendaSetup')
 
 
 
@@ -39,6 +41,7 @@ app.use(cors({
 app.use('/auth',authRouter);
 app.use('/post',postRouter);
 app.use('/user', userRouter);
+app.use('/story',storyRouter)
 app.get('/' , (req,res) => {
     res.status(200).send("hiiii");
 })

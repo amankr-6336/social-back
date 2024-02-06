@@ -1,5 +1,6 @@
 const Post = require("../model/Post");
 const User = require("../model/User");
+const Story=require('../model/Story')
 const cloudinary=require('cloudinary').v2;
 // const { post } = require("../router/UserRouter");
 const { error, success } = require("../utils/Utils");
@@ -63,6 +64,13 @@ const getPostsOfFollowing =async (req,res) =>{
             }
         }).populate('owner');
 
+        const story=await Story.find({
+            'owner':{
+                '$in':curUser.followings
+            }
+        }).populate('owner');
+        // console.log("story", story);
+
         const posts=fullPosts.map(item =>mapPostOutput(item,req._id)).reverse();
         // curUser.posts=posts;
         const followingsIds=curUser.followings.map(item =>item._id);
@@ -73,7 +81,7 @@ const getPostsOfFollowing =async (req,res) =>{
             }
         })
     
-        return res.send(success(200,{...curUser._doc,suggestions,posts}));
+        return res.send(success(200,{...curUser._doc,suggestions,posts,story}));
     } catch (e) {
          return res.send(error(500,e.message));
     }
@@ -166,7 +174,7 @@ const deletedMyProfile =async (req,res) =>{
 
 const getMyInfo= async (req,res) => {
     try {
-        const user=await User.findById(req._id);
+        const user=await User.findById(req._id).populate('story');
         return res.send(success(200,{user}));
     } catch (e) {
         return res.send(error(500,e.message));
@@ -214,10 +222,19 @@ const getUserProfile= async (req,res)=>{
             }
         });
 
+        console.log(user);
+
+        const curuser=await User.findById(userId).populate({
+            path:'story',
+            populate:{
+                path:'owner'
+            }
+        })
+        const story=curuser.story;
         const fullPosts=user.posts;
         const posts=fullPosts.map(item =>mapPostOutput(item,req._id)).reverse();
 
-        return res.send(success(200,{...user._doc,posts}));
+        return res.send(success(200,{...user._doc,posts,story}));
 
     } catch (e) {
         return res.send(error(500,e.message)); 
