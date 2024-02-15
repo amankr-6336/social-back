@@ -3,15 +3,22 @@ const User = require("../model/User");
 const { success, error } = require("../utils/Utils");
 const { mapPostOutput } = require("../utils/responseWrapper");
 const cloudinary = require("cloudinary").v2;
+const sharp = require('sharp');
 
 const createPostController = async (req, res) => {
   try {
     const { caption, postImg } = req.body;
     const owner = req._id;
 
+   
+
     if (!caption || !postImg) {
       return res.send(error(401, "all field are required"));
     }
+
+    
+
+
 
     const cloudImg = await cloudinary.uploader.upload(postImg, {
       folder: "postImg",
@@ -116,6 +123,21 @@ const deletePostController = async (req, res) => {
     return res.send(error(500, e.message));
   }
 };
+
+// async function compressAndResizeImage(imageData) {
+//   try {
+//     // Using sharp to resize and compress image
+//     const compressedImageData = await sharp(imageData)
+//       .resize({ width: 800 }) // Resize image to a maximum width of 800 pixels (adjust as needed)
+//       .jpeg({ quality: 80 }) // Set JPEG quality to 80% (adjust as needed)
+//       .toBuffer();
+//     return compressedImageData;
+//   } catch (error) {
+//     console.error('Error compressing image:', error);
+//     throw new Error('Failed to compress image');
+//   }
+// }
+
 
 module.exports = {
   createPostController,

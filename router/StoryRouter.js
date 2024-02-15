@@ -6,5 +6,6 @@ const userRequire=require('../middlewares/UserRequres');
 router.post('/',userRequire,storyRouter.createStoryController);
 router.delete('/',userRequire,storyRouter.deleteStoryController);
 router.get('/',userRequire,storyRouter.getMystoryController);
+router.get('/all',userRequire,storyRouter.getStoryOfFollowing);
 
 module.exports=router;
